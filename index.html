@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouman Creative Hub | Premium Digital Agency</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #007bff;
+            --accent-blue: #00d2ff;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; }
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+        .title { text-align: center; margin: 60px 0 40px; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        .title span { color: var(--primary-blue); }
+
+        /* --- Header --- */
+        header {
+            background: rgba(10, 10, 10, 0.98); padding: 15px 0;
+            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222;
+        }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: white; text-decoration: none; }
+        .logo span { color: var(--primary-blue); }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--primary-blue); }
+
+        /* --- Hero --- */
+        .hero {
+            height: 70vh; display: flex; align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center; text-align: center;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 20px; }
+        .hero p { color: var(--text-gray); margin-bottom: 30px; }
+
+        /* --- Video Section --- */
+        .video-box { background: var(--bg-card); padding: 30px; border-radius: 20px; border: 1px solid #222; margin-bottom: 50px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* --- Services --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .service-card { background: var(--bg-card); padding: 30px; border-radius: 20px; border: 1px solid #222; transition: 0.3s; }
+        .service-card:hover { border-color: var(--primary-blue); transform: translateY(-5px); }
+        .service-card i { font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 20px; }
+
+        /* --- Happy Clients --- */
+        .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 0; }
+        .testi-card { background: #111; padding: 25px; border-radius: 15px; border-left: 5px solid var(--primary-blue); }
+        .testi-card p { font-style: italic; color: var(--text-gray); }
+        .client-name { margin-top: 15px; font-weight: 700; color: var(--accent-blue); display: block; }
+
+        /* --- Comments Section --- */
+        .comments-section { background: var(--bg-card); padding: 40px; border-radius: 20px; margin-top: 50px; }
+        #comment-list { margin-bottom: 20px; }
+        .comment { background: #0a0a0a; padding: 15px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #333; }
+
+        /* --- Contact --- */
+        .contact-flex { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 15px; background: #050505; border: 1px solid #333; color: white; border-radius: 8px; }
+        .btn-blue { background: var(--primary-blue); color: white; padding: 15px 35px; border-radius: 8px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; }
+
+        /* --- Chatbot --- */
+        #chat-widget { position: fixed; bottom: 100px; right: 25px; width: 320px; background: var(--bg-card); border: 1px solid var(--primary-blue); border-radius: 15px; display: none; flex-direction: column; z-index: 2000; overflow: hidden; }
+        .chat-header { background: var(--primary-blue); padding: 15px; display: flex; justify-content: space-between; font-weight: bold; }
+        .chat-toggle { position: fixed; bottom: 25px; right: 25px; background: var(--primary-blue); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2000; box-shadow: 0 5px 15px rgba(0,123,255,0.4); }
+
+        @media (max-width: 768px) { .contact-flex { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Nouman<span>CreativeHub</span></a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#video">Portfolio</a>
+                <a href="#services">Services</a>
+                <a href="#clients">Clients</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Expert Digital <span>Creative Solutions</span></h1>
+            <p>Graphic Design | Video Editing | Photography | Documentation</p>
+            <a href="https://wa.me/923235198025" target="_blank" class="btn-blue">Hire Me on WhatsApp</a>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <h2 id="video" class="title">Featured <span>Work</span></h2>
+        <div class="video-box">
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/11_S3hwqxPwk_5x5seZLfj-X6bnyDS-Tr/preview"></iframe>
+            </div>
+            <p style="margin-top:15px; text-align:center;">Professional Cinematic Editing & Production</p>
+        </div>
+
+        <h2 id="services" class="title">What We <span>Offer</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-bezier-curve"></i>
+                <h3>Graphic Design</h3>
+                <p>Logos, Certificates (Nikah/Award), CVs, and Social Media branding.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-video"></i>
+                <h3>Video Editing</h3>
+                <p>YouTube, Reels, TikTok, and Cinematic Business Promos.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-camera"></i>
+                <h3>Photography</h3>
+                <p>Professional Event & Product shoot with high-end retouching.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>Documentation</h3>
+                <p>Official reports, MS Word formatting, and professional CV writing.</p>
+            </div>
+        </div>
+
+        <h2 id="clients" class="title">Happy <span>Clients</span></h2>
+        <div class="testimonials">
+            <div class="testi-card">
+                <p>"Nouman did an amazing job with my wedding certificate and video editing. Highly recommended!"</p>
+                <span class="client-name">- Ahmed Khan</span>
+            </div>
+            <div class="testi-card">
+                <p>"Very professional and fast delivery. My business logo looks incredible."</p>
+                <span class="client-name">- Sarah Malik</span>
+            </div>
+            <div class="testi-card">
+                <p>"The cinematic video editing for my YouTube channel was top-notch. Great talent!"</p>
+                <span class="client-name">- Zaid Sheikh</span>
+            </div>
+        </div>
+
+        <div class="comments-section">
+            <h3>Client Feedback & Comments</h3>
+            <div id="comment-list">
+                <div class="comment"><strong>Zeeshan:</strong> Your work quality is really impressive!</div>
+                <div class="comment"><strong>Ayesha:</strong> How much do you charge for a professional CV?</div>
+            </div>
+            <input type="text" id="user-name" placeholder="Your Name">
+            <textarea id="user-comment" rows="3" placeholder="Add your comment..."></textarea>
+            <button class="btn-blue" onclick="addComment()">Post Comment</button>
+        </div>
+
+        <h2 id="contact" class="title">Get In <span>Touch</span></h2>
+        <div class="contact-flex">
+            <div style="background:#111; padding:30px; border-radius:15px;">
+                <h3>Contact Details</h3><br>
+                <p>WhatsApp:</p>
+                <a href="https://wa.me/923235198025" style="color:var(--accent-blue); text-decoration:none;">0323-5198025</a><br><br>
+                <p>Email:</p>
+                <a href="mailto:noumansaidsaid@gmail.com?subject=Inquiry" style="color:var(--accent-blue); text-decoration:none;">noumansaidsaid@gmail.com</a>
+            </div>
+            <form onsubmit="return false;">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="4" placeholder="How can I help you?"></textarea>
+                <button class="btn-blue" style="width:100%;">Send Request</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="chat-toggle" onclick="toggleChat()"><i class="fas fa-robot" style="font-size: 1.8rem; color: white;"></i></div>
+    <div id="chat-widget">
+        <div class="chat-header"><span>Nouman Assistant</span><span onclick="toggleChat()" style="cursor:pointer">X</span></div>
+        <div id="chat-box" style="height:250px; padding:15px; background:#0a0a0a; overflow-y:auto; font-size:0.9rem;">
+            <p>Welcome! Check our video and services. How can I help you today?</p>
+        </div>
+        <input type="text" placeholder="Type a message..." style="margin:0; border:none; border-top:1px solid #333;" onkeypress="handleChat(event)">
+    </div>
+
+    <footer style="text-align:center; padding:50px 0; color:var(--text-gray);">
+        <p>&copy; 2026 Nouman Creative Hub. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleChat() {
+            const chat = document.getElementById('chat-widget');
+            chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function handleChat(e) {
+            if(e.key === 'Enter' && e.target.value !== "") {
+                const box = document.getElementById('chat-box');
+                box.innerHTML += `<p style="text-align:right; color:var(--accent-blue);"><b>You:</b> ${e.target.value}</p>`;
+                setTimeout(() => {
+                    box.innerHTML += `<p><b>AI:</b> For detailed pricing, please click the WhatsApp button!</p>`;
+                    box.scrollTop = box.scrollHeight;
+                }, 500);
+                e.target.value = "";
+            }
+        }
+
+        function addComment() {
+            const name = document.getElementById('user-name').value;
+            const text = document.getElementById('user-comment').value;
+            if(name && text) {
+                const list = document.getElementById('comment-list');
+                list.innerHTML += `<div class="comment"><strong>${name}:</strong> ${text}</div>`;
+                document.getElementById('user-name').value = "";
+                document.getElementById('user-comment').value = "";
+            }
+        }
+    </script>
+</body>
+</html>
